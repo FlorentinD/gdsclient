@@ -159,7 +159,8 @@ def test_train_unfiltered_lp_pipeline(runner: Neo4jQueryRunner, lp_pipe: LPTrain
 @pytest.mark.compatible_with(max_exclusive=ServerVersion(2, 2, 0))
 def test_train_estimate_unfiltered_lp_pipeline(lp_pipe: LPTrainingPipeline, G: Graph) -> None:
     lp_pipe.addLogisticRegression()
-    result = lp_pipe.train_estimate(G, modelName="m", concurrency=2)
+
+    result = lp_pipe.train_estimate(G, modelName="lp-model", concurrency=2)
     assert result["requiredMemory"]
 
 
